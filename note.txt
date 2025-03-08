@@ -1,0 +1,27 @@
+npx create-next-app@latest
+npx shadcn@latest init
+npx shadcn@latest add button
+npx shadcn@latest add form
+npx shadcn@latest add input
+npx create-next-app@latest imagekit-next-app
+npm install imagekit 
+npx shadcn@latest add toast
+npm install prisma
+npm install @prisma/client
+npx prisma init
+npx prisma migrate dev --name init
+npx prisma generate
+npx prisma db push 
+npx prisma studio
+npm i redis
+npm install next-auth@beta
+npm install bcryptjs
+npx auth secret
+npx shadcn@latest add textarea
+npx shadcn@latest add avatar ( use=>  --legacy-peer-deps)
+npm install bullmq ioredis --save
+npm run worker:sample
+npm install resend
+npm install cron
+npm i react-colorful
+npm install @react-email/components -E
