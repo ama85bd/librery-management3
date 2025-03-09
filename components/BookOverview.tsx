@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import BookCover from './BookCover';
-import { redisClient } from '@/lib/db';
+import { db } from '@/lib/db';
+import BorrowBook from './BorrowBook';
 
 interface Props extends Book {
   userId: string;
@@ -20,7 +21,24 @@ const BookOverview = async ({
   id,
   userId,
 }: Props) => {
+  const user = await db.users.findUnique({
+    where: {
+      id: userId as string,
+    },
+  });
+  console.log('user', user);
   // await redisClient.hSet(`book:3`, { title: 'titel3', author: 'author3' });
+
+  if (!user) return null;
+
+  const borrowingEligibility = {
+    isEligible: availableCopies > 0 && user?.status === 'APPROVED',
+    message:
+      availableCopies <= 0
+        ? 'Book is not available'
+        : 'You are not eligible to borrow this book',
+  };
+
   return (
     <section className='book-overview'>
       <div className='flex flex-1 flex-col gap-5'>
@@ -50,6 +68,14 @@ const BookOverview = async ({
             </p>
           </div>
           <p className='book-description'>{description}</p>
+
+          {user && (
+            <BorrowBook
+              bookId={id}
+              userId={userId}
+              borrowingEligibility={borrowingEligibility}
+            />
+          )}
         </div>
         <div className='relative flex flex-1 justify-center'>
           <div className='relative'>

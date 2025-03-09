@@ -1,7 +1,6 @@
 import { auth } from '@/auth';
 import BookList from '@/components/BookList';
 import BookOverview from '@/components/BookOverview';
-import EmailTemplate from '@/components/EmailTemplate';
 import { db } from '@/lib/db';
 
 const Home = async () => {

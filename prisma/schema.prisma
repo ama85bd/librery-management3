@@ -76,7 +76,7 @@ model BorrowRecords{
   userId String @db.Uuid
   bookId String @db.Uuid
   borrowDate DateTime @default(now()) @db.Timestamptz  // DateTime with timezone and default current date/time
-   status  BORROW_STATUS  @default(BORROWED)
+  status  BORROW_STATUS  @default(BORROWED)
   dueDate DateTime 
   returnDate DateTime?
   createAt DateTime @default(now())

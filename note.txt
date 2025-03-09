@@ -25,3 +25,5 @@ npm install resend
 npm install cron
 npm i react-colorful
 npm install @react-email/components -E
+npm install dotenv --save
+npm install dayjs 
